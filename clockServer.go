@@ -5,6 +5,7 @@ import (
 	"io"
 	"log"
 	"net"
+	"os"
 	"time"
 )
 
@@ -20,7 +21,8 @@ func handleConn(c net.Conn) {
 }
 
 func main() {
-	listener, err := net.Listen("tcp", "localhost:9090")
+	arg := os.Args[2]
+	listener, err := net.Listen("tcp", "localhost:"+arg)
 	if err != nil {
 		log.Fatal(err)
 	}
